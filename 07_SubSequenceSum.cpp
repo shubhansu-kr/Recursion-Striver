@@ -3,7 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Code funcitonal for Every Integer. Z  
+// Code funcitonal for Every Integer. Z
 void subSequenceSum(vector<int> A, vector<int> &v, int i = 0, int sum = 0)
 {
     if (i >= A.size())
@@ -26,7 +26,7 @@ void subSequenceSum(vector<int> A, vector<int> &v, int i = 0, int sum = 0)
     subSequenceSum(A, v, i + 1, sum);
 }
 
-// Code fucntional for positive and Negative intergers only. Z-{0} ; 
+// Code fucntional for positive intergers only. +Z ;
 void subSequenceSumP(vector<int> A, vector<int> &v, int i = 0, int sum = 0)
 {
     if (i >= A.size() || sum == 6)
@@ -49,12 +49,33 @@ void subSequenceSumP(vector<int> A, vector<int> &v, int i = 0, int sum = 0)
     subSequenceSumP(A, v, i + 1, sum);
 }
 
+int c = 0;
+void sumCount(vector<int> A, int i = 0, int sum = 0)
+{
+    if (i >= A.size())
+    {
+        if (sum == 6)
+        {
+            ++c;
+        }
+        return;
+    }
+    // Take
+    sum += A[i];
+    sumCount(A, i + 1, sum);
+    // Dont Take
+    sum -= A[i];
+    sumCount(A, i + 1, sum);
+}
+
 int main()
 {
-    vector<int> vec = {3, 4, 2, 3, -1, 0};
+    vector<int> vec = {3, 4, 2, 3, -1, 1, 0};
     vector<int> v;
     subSequenceSumP(vec, v);
     cout << "ALL " << endl;
     subSequenceSum(vec, v);
+    sumCount(vec);
+    cout << "count " << c << endl;
     return 0;
 }
