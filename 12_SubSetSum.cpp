@@ -35,6 +35,8 @@ class Solution
 public:
     vector<int> subsetSums(vector<int> arr, int N)
     {
+        // arr : input array 
+        // N : Size of arr(input arrray)
         vector<int> ans;
         for (int i = 0; i < (1 << N); ++i)
         {
@@ -57,5 +59,9 @@ int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+
+    int N = 5;
+    cout << (1 << N) << endl; // prints 2^N (2^5 = 32).
+    
     return 0;
 }
