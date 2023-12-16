@@ -3,6 +3,33 @@
 #include <bits/stdc++.h>
 using namespace std ;
 
+class Solution3 {
+    // Factorial of N
+    // Functional Way:
+
+    int factorial(int n){
+        if (n < 1) return 1;
+        return n * factorial(n - 1);
+    }
+};
+
+class Solution2 {
+    // Factorial of N
+    // Parameterised Way - We carry a parameter to hold the result
+public: 
+    void solve(int &fact, int n){
+        if (n < 1) return;
+        fact *= n;
+        solve(fact, n-1);
+    }
+
+    int factorial(int n){
+        int fact = 1;
+        solve(fact, n);
+        return fact;
+    }
+};
+
 class Solution1 {
     // Sum of First N numbers 
     // Parameterised Way - We carry a parameter to hold the result
