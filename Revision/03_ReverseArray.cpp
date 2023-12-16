@@ -3,6 +3,21 @@
 #include <bits/stdc++.h>
 using namespace std ;
 
+class Solution2{
+    // Smart Parameters.
+public: 
+    void solve(vector<int> &nums, int i, int j) {
+        if (i >= j) return;
+        swap(nums[i], nums[j]);
+        solve(nums, i+1, j-1);
+    }
+
+    vector<int> reversArr(vector<int> &nums){
+        solve(nums, 0, nums.size()-1);
+        return nums;
+    }
+};
+
 class Solution1{
     // Inplace Swapping
 public: 
